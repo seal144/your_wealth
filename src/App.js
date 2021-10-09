@@ -1,9 +1,9 @@
-import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      Your_Wealth
+    <div>
+      <h1>YOUR_WEALTH</h1>
     </div>
   );
 }
