@@ -12,8 +12,33 @@ html {
 }
 
 #root {
-  color: $color-default-theme;
+  color: $color1-default-theme;
   font-family: Inconsolata, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  color: $color1-default-theme;
+  border: 2px solid $color1-default-theme;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: 0.1s all;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  cursor: default;
 }

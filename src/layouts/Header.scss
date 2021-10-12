@@ -1,0 +1,35 @@
+@import "../styles/variables.scss";
+
+.header {
+  display: flex;
+
+  &__logo {
+    width: $header-hight;
+    margin-left: 2rem;
+    font-size: 2.5rem;
+  }
+
+  &__text {
+    flex-grow: 1;
+  }
+
+  &__button {
+    width: $header-hight;
+    height: min-content;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin: auto 2rem auto 0;
+
+    & .icon {
+      transition: 0.4s transform;
+    }
+
+    &:hover .icon {
+      transform: rotate(90deg);
+    }
+
+    &:active .icon {
+      transform: rotate(180deg);
+    }
+  }
+}
