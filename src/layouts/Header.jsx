@@ -6,9 +6,9 @@ import { StoreContext } from '../store/StoreProvider';
 import './Header.scss'
 
 const Header = ({content}) => {
-  const { currencies } = useContext(StoreContext);
+  const { currencies, gramOfGoldValue, cryptoCurrencies } = useContext(StoreContext);
 
-  console.log(currencies);
+  console.log(currencies, gramOfGoldValue, cryptoCurrencies);
 
   return (
     <div className="header">
