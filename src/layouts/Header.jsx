@@ -1,14 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { DollarOutlined, SyncOutlined } from '@ant-design/icons';
-
-import { StoreContext } from '../store/StoreProvider';
 
 import './Header.scss'
 
 const Header = ({content}) => {
-  const { currencies, gramOfGoldValue, cryptoCurrencies } = useContext(StoreContext);
-
-  console.log(currencies, gramOfGoldValue, cryptoCurrencies);
 
   return (
     <div className="header">
