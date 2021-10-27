@@ -29,3 +29,6 @@ function App() {
 };
 
 export default App;
+
+// @todo add hamburger
+// @todo add dark mode

@@ -19,20 +19,24 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-button {
+button,
+.button {
   cursor: pointer;
   color: $color1-default-theme;
+  padding: 0.5rem;
+  text-decoration: none;
   border: 2px solid $color1-default-theme;
   background-color: rgba(0, 0, 0, 0.1);
   transition: 0.1s all;
-  padding: 0.5rem;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-button:active {
+button:active,
+.button:active {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
