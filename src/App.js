@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import StoreProvider from './store/StoreProvider';
 import Header from './layouts/Header';
+import Content from './layouts/Content';
 import Footer from './layouts/Footer';
 
 import './layouts/layouts.scss'
@@ -9,19 +11,24 @@ import './layouts/layouts.scss'
 function App() {
   return (
     <StoreProvider>
-      <div className="app">
-        <header className="app__header">
-          <Header content="YOUR_WEALTH" />
-        </header>
-        <main className="app__main">
-          <h2>MIAN</h2>
-        </main>
-        <footer className="app__footer">
-          <Footer content="contact: functionalweasel@gmail.com" />
-        </footer>
-      </div>
+      <Router>
+        <div className="app">
+          <header className="app__header">
+            <Header content="YOUR_WEALTH" />
+          </header>
+          <main className="app__main">
+            <Content />
+          </main>
+          <footer className="app__footer">
+            <Footer content="contact: functionalweasel@gmail.com" />
+          </footer>
+        </div>
+      </Router>
     </StoreProvider>
   );
 };
 
 export default App;
+
+// @todo add hamburger
+// @todo add dark mode
