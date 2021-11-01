@@ -6,14 +6,14 @@ const StoreProvider = ({children}) => {
   const [ currencies, setCurrencies ] = useState([]);
   const [ gramOfGoldValue, setGramOfGoldValue ] = useState(0);
   const [ cryptoCurrencies, setCryptoCurrencies ] = useState({});
-  const [ possibleCurrencies, setPosibleCurrencies ] = useState([]);
-  const [ possibleCrypto, setPosibleCrypto ] = useState([]);
+  const [ possibleCurrencies, setPossibleCurrencies ] = useState([]);
+  const [ possibleCrypto, setPossibleCrypto ] = useState([]);
 
   const fetchCurrencies = async () => {
     try {
       const response = await fetch('https://api.nbp.pl/api/exchangerates/tables/a');
       let data = await response.json();
-      data = [...data[0].rates, {currency: 'złoty', code: 'PLN', mid: 1}]
+      data = [{currency: 'złoty', code: 'PLN', mid: 1}, ...data[0].rates]
       setCurrencies(data);
     } catch(error) {
       console.warn(error);
@@ -52,7 +52,7 @@ const StoreProvider = ({children}) => {
 
   useEffect(()=> {
       const units = currencies.map(curr => curr.code);
-      setPosibleCurrencies(units);
+      setPossibleCurrencies(units);
   }, [currencies]);
 
   useEffect(()=> {
@@ -73,7 +73,7 @@ const StoreProvider = ({children}) => {
         }
         return result;
       })
-      setPosibleCrypto(units);
+      setPossibleCrypto(units);
   }, [cryptoCurrencies]);
 
   return(

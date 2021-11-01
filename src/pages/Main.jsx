@@ -2,34 +2,36 @@ import React, { useContext, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 
 import { StoreContext } from '../store/StoreProvider';
+import InputField from '../components/InputField'
 
 let lastId = 0;
 
 const Main = () => {
   const { currencies, gramOfGoldValue, cryptoCurrencies } = useContext(StoreContext);
-  const [ inputFilds, setInputFields ] = useState([]);
   const [ mainUnit, setMainUnit ] = useState('PLN');
+  const [ inputFilds, setInputFields ] = useState([{id:0, defaultUnit: mainUnit}]);
   const [ sum, setSum ] = useState(0);
 
   const addField = () => {
     const newField = {
       id: lastId + 1,
-      value: 0,
-      unit: mainUnit
+      defaultUnit: mainUnit
     }
     lastId++;
     setInputFields(prevState => [...prevState, newField])
+    console.log(inputFilds);
   }
 
-  console.log(currencies, gramOfGoldValue, cryptoCurrencies);
-
-  const displayInputFields = inputFilds.map(item => <p>{item.id}</p>)
+  const displayInputFields = inputFilds.map(item => (
+    <InputField key={item.id} id={item.id} defaultUnit={item.defaultUnit}/>
+  ))
 
   return (
     <div className="main">
-      <h1 className="main__title">MAIN</h1>
+      <h2 className="main__title">INPUT_YOUR_WEALTH</h2>
       {displayInputFields}
       <button onClick={addField}><PlusOutlined /></button>
+      <h3>{sum}</h3>
     </div>
   )
 }
