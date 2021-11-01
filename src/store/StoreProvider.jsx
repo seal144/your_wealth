@@ -5,13 +5,16 @@ export const StoreContext = createContext(null);
 const StoreProvider = ({children}) => {
   const [ currencies, setCurrencies ] = useState([]);
   const [ gramOfGoldValue, setGramOfGoldValue ] = useState(0);
-  const [ cryptoCurrencies, setCryptoCurrencies ] = useState({}); 
+  const [ cryptoCurrencies, setCryptoCurrencies ] = useState({});
+  const [ possibleCurrencies, setPosibleCurrencies ] = useState([]);
+  const [ possibleCrypto, setPosibleCrypto ] = useState([]);
 
   const fetchCurrencies = async () => {
     try {
       const response = await fetch('https://api.nbp.pl/api/exchangerates/tables/a');
-      const data = await response.json();
-      setCurrencies(data[0].rates);
+      let data = await response.json();
+      data = [...data[0].rates, {currency: 'złoty', code: 'PLN', mid: 1}]
+      setCurrencies(data);
     } catch(error) {
       console.warn(error);
     }
@@ -47,12 +50,40 @@ const StoreProvider = ({children}) => {
     fetchData();
   }, []);
 
+  useEffect(()=> {
+      const units = currencies.map(curr => curr.code);
+      setPosibleCurrencies(units);
+  }, [currencies]);
+
+  useEffect(()=> {
+      let units = Object.keys(cryptoCurrencies).map(item => {
+        item = item.slice(0, item.indexOf('-'))
+        return item;
+      });
+      units = units.filter((unit , index, array) => {
+        let result = true;
+        if (index === 0) {
+          return result 
+        } 
+        for (let i = 0; i < index; i++) {
+          if (unit === array[i]){
+            result = false;
+            break;
+          }
+        }
+        return result;
+      })
+      setPosibleCrypto(units);
+  }, [cryptoCurrencies]);
+
   return(
     <StoreContext.Provider value={{
-      currencies: currencies,
-      gramOfGoldValue: gramOfGoldValue,
-      cryptoCurrencies: cryptoCurrencies,
-      refreshRate: fetchData,
+      currencies,
+      gramOfGoldValue,
+      cryptoCurrencies,
+      possibleCurrencies,
+      possibleCrypto,
+      refreshRates: fetchData,
       }
     }>
       {children}
@@ -61,3 +92,5 @@ const StoreProvider = ({children}) => {
 };
 
 export default StoreProvider;
+
+// @todo should be cryptocurrency not cryptoCurrency
