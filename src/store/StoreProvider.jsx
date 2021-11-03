@@ -50,31 +50,37 @@ const StoreProvider = ({children}) => {
     fetchData();
   }, []);
 
-  useEffect(()=> {
-      const units = currencies.map(curr => curr.code);
-      setPossibleCurrencies(units);
-  }, [currencies]);
+  const getCorrenciesCodes = () => {
+    const units = currencies.map(curr => curr.code);
+    units.sort()
+    setPossibleCurrencies(units);
+  }
 
-  useEffect(()=> {
-      let units = Object.keys(cryptoCurrencies).map(item => {
-        item = item.slice(0, item.indexOf('-'))
-        return item;
-      });
-      units = units.filter((unit , index, array) => {
-        let result = true;
-        if (index === 0) {
-          return result 
-        } 
-        for (let i = 0; i < index; i++) {
-          if (unit === array[i]){
-            result = false;
-            break;
-          }
+  const getCryptoCodes = () => {
+    let units = Object.keys(cryptoCurrencies).map(item => {
+      item = item.slice(0, item.indexOf('-'))
+      return item;
+    });
+    units = units.filter((unit , index, array) => {
+      let result = true;
+      if (index === 0) {
+        return result 
+      } 
+      for (let i = 0; i < index; i++) {
+        if (unit === array[i]){
+          result = false;
+          break;
         }
-        return result;
-      })
-      setPossibleCrypto(units);
-  }, [cryptoCurrencies]);
+      }
+      return result;
+    })
+    units.sort();
+    setPossibleCrypto(units);
+  }
+
+  useEffect(getCorrenciesCodes, [currencies]);
+
+  useEffect(getCryptoCodes, [cryptoCurrencies]);
 
   return(
     <StoreContext.Provider value={{
