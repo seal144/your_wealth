@@ -1,42 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 
-import { StoreContext } from '../store/StoreProvider';
+import SelectUnits from './SelectUnits';
 
-const InputField = ({id, defaultUnit}) => {
-  const { possibleCurrencies, possibleCrypto } = useContext(StoreContext);
+const InputField = ({id, defaultUnit, updateinputField}) => {
   const [ value, setValue ] = useState(0);
   const [ unit, setUnit ] = useState(defaultUnit);
 
   const handleValueChange = (event) => {
-    setValue(event.target.value)
+    setValue(Number(event.target.value))
   }
 
-  const handleUnitsChange = (event) =>{
-    setUnit(event.target.value)
+  const importUnit = (unit) => {
+    setUnit(unit);
   }
-  
-  const optionsCurrencies = possibleCurrencies.map(currency =>(
-    <option key={currency} value={currency}>{currency}</option>
-  ));
-  const optionsCrypto = possibleCrypto.map(crypto => (
-    <option key={crypto} value={crypto}>{crypto}</option>
-  ));
+
+  useEffect(()=>{
+    updateinputField({id, value, unit})
+  },[value, unit]);
 
   return(
     <form onSubmit={(e)=>{e.preventDefault()}}>
       <input type="number" name="value" value={value} onChange={handleValueChange}/>
-      <select name="unit" value={unit} onChange={handleUnitsChange}>
-        <optgroup label="currencies">
-          {optionsCurrencies}
-        </optgroup>
-        <optgroup label="cryptocurrencies">
-          {optionsCrypto}
-        </optgroup>
-      </select>
+      <SelectUnits defaultUnits={unit} exportUnit={importUnit} /> 
       <button type="button"><CloseOutlined /></button>
     </form>
   )
 }
 
-export default InputField;
+export default React.memo(InputField);
+
+//sprawdzic czy to memo dziala
