@@ -23,6 +23,13 @@ const Main = () => {
     setInputFields(prevState => [...prevState, newField]);
   }
 
+  const deleteField = (id) => {
+    const newInputFields = inputFields.filter((field)=>(
+      field.id !== id
+    ));
+    setInputFields(newInputFields);
+  }
+
   const updateinputField = (updatedField) => {
     const index = inputFields.findIndex(field => {return field.id === updatedField.id});
     const newInputFields = [...inputFields]
@@ -42,7 +49,13 @@ const Main = () => {
   }, [inputFields])
 
   const displayInputFields = inputFields.map(item => (
-    <InputField key={item.id} id={item.id} defaultUnit={item.unit} updateinputField={updateinputField}/>
+    <InputField 
+      key={item.id} 
+      id={item.id} 
+      defaultUnit={item.unit} 
+      deleteField={deleteField}
+      updateinputField={updateinputField} 
+    />
   ))
 
   return (

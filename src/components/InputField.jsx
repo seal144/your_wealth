@@ -3,7 +3,7 @@ import { CloseOutlined } from '@ant-design/icons';
 
 import SelectUnits from './SelectUnits';
 
-const InputField = ({id, defaultUnit, updateinputField}) => {
+const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
   const [ value, setValue ] = useState(0);
   const [ unit, setUnit ] = useState(defaultUnit);
 
@@ -23,7 +23,7 @@ const InputField = ({id, defaultUnit, updateinputField}) => {
     <form onSubmit={(e)=>{e.preventDefault()}}>
       <input type="number" name="value" value={value} onChange={handleValueChange}/>
       <SelectUnits defaultUnits={unit} exportUnit={importUnit} /> 
-      <button type="button"><CloseOutlined /></button>
+      <button type="button" onClick={() => {deleteField(id)}}><CloseOutlined /></button>
     </form>
   )
 }
