@@ -13,6 +13,8 @@ const Main = () => {
   const [ inputFields, setInputFields ] = useState([{id:0, value: 0, unit: mainUnit}]);
   const [ sum, setSum ] = useState(0);
 
+  console.log(currencies, gramOfGoldValue, cryptoCurrencies)
+
   const addField = () => {
     const newField = {
       id: lastId + 1,
@@ -63,7 +65,7 @@ const Main = () => {
       <h2 className="main__title">INPUT_YOUR_WEALTH</h2>
       {displayInputFields}
       <button onClick={addField}><PlusOutlined /></button>
-      <h2 className="main__title">SUM_OF_YOUR WEALTH</h2>
+      <h2 className="main__title">SUM_OF_YOUR_WEALTH</h2>
       <Sum sum={sum} mainUnit={mainUnit} setMainUnit={setMainUnit}/>
     </div>
   )

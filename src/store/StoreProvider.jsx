@@ -8,6 +8,7 @@ const StoreProvider = ({children}) => {
   const [ cryptoCurrencies, setCryptoCurrencies ] = useState({});
   const [ possibleCurrencies, setPossibleCurrencies ] = useState([]);
   const [ possibleCrypto, setPossibleCrypto ] = useState([]);
+  const [ possibleGoldUnits ] = useState(['Gold g', 'Gold kg', 'Gold oz']);
 
   const fetchCurrencies = async () => {
     try {
@@ -54,7 +55,7 @@ const StoreProvider = ({children}) => {
     const units = currencies.map(curr => curr.code);
     units.sort()
     setPossibleCurrencies(units);
-  }
+  };
 
   const getCryptoCodes = () => {
     let units = Object.keys(cryptoCurrencies).map(item => {
@@ -76,7 +77,7 @@ const StoreProvider = ({children}) => {
     })
     units.sort();
     setPossibleCrypto(units);
-  }
+  };
 
   useEffect(getCorrenciesCodes, [currencies]);
 
@@ -89,6 +90,7 @@ const StoreProvider = ({children}) => {
       cryptoCurrencies,
       possibleCurrencies,
       possibleCrypto,
+      possibleGoldUnits,
       refreshRates: fetchData,
       }
     }>

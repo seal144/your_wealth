@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { StoreContext } from '../store/StoreProvider';
 
 const SelectUnits = ({defaultUnits, exportUnit}) => {
-  const { possibleCurrencies, possibleCrypto } = useContext(StoreContext);
+  const { possibleCurrencies, possibleCrypto, possibleGoldUnits } = useContext(StoreContext);
   const [ unit, setUnit ] = useState(defaultUnits);
 
   const handleUnitChange = (event) =>{
@@ -20,13 +20,20 @@ const SelectUnits = ({defaultUnits, exportUnit}) => {
   const optionsCrypto = possibleCrypto.map(crypto => (
     <option key={crypto} value={crypto}>{crypto}</option>
   ));
+  const optionsGold = possibleGoldUnits.map((unit, index) => (
+    <option key={index} value={unit}>{unit}</option>
+  ));
+
   return ( 
     <select name="unit" value={unit} onChange={handleUnitChange}>
-      <optgroup label="currencies">
+      <optgroup label="Currencies">
         {optionsCurrencies}
       </optgroup>
-      <optgroup label="cryptocurrencies">
+      <optgroup label="Cryptocurrencies">
         {optionsCrypto}
+      </optgroup>
+      <optgroup label="Gold">
+        {optionsGold}
       </optgroup>
     </select>
    );
