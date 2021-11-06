@@ -9,11 +9,12 @@ let lastId = 0;
 
 const Main = () => {
   const { currencies, gramOfGoldValue, cryptoCurrencies } = useContext(StoreContext);
-  const [ mainUnit, setMainUnit ] = useState('PLN');
+  const [ mainUnit, setMainUnit ] = useState({code:'PLN', type:'currency'});
   const [ inputFields, setInputFields ] = useState([{id:0, value: 0, unit: mainUnit}]);
   const [ sum, setSum ] = useState(0);
 
-  console.log(currencies, gramOfGoldValue, cryptoCurrencies)
+  // console.log(currencies, gramOfGoldValue, cryptoCurrencies)
+  console.log(inputFields);
 
   const addField = () => {
     const newField = {

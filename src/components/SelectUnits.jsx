@@ -4,14 +4,22 @@ import { StoreContext } from '../store/StoreProvider';
 
 const SelectUnits = ({defaultUnits, exportUnit}) => {
   const { possibleCurrencies, possibleCrypto, possibleGoldUnits } = useContext(StoreContext);
-  const [ unit, setUnit ] = useState(defaultUnits);
+  const [ unit, setUnit ] = useState(defaultUnits.code);
 
   const handleUnitChange = (event) =>{
     setUnit(event.target.value)
   }
 
   useEffect(()=>{
-    exportUnit(unit)
+    let unitType
+    if (possibleCurrencies.findIndex(currency => currency === unit) >= 0){
+      unitType = 'currency'
+    } else if (possibleCrypto.findIndex(crypto => crypto === unit) >= 0){
+      unitType = 'crypto'
+    } else if (possibleGoldUnits.findIndex(goldUnit => goldUnit === unit) >=0){
+      unitType = 'gold'
+    };
+    exportUnit({code: unit, type: unitType})
   },[ unit ])
 
   const optionsCurrencies = possibleCurrencies.map(currency =>(
