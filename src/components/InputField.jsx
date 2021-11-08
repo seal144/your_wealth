@@ -21,7 +21,7 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
 
   return(
     <form onSubmit={(e)=>{e.preventDefault()}}>
-      <input type="number" name="value" value={value} onChange={handleValueChange}/>
+      <input type="number" min="0" name="value" value={value} onChange={handleValueChange}/>
       <SelectUnits defaultUnits={unit} exportUnit={importUnit} /> 
       <button type="button" onClick={() => {deleteField(id)}}><CloseOutlined /></button>
     </form>

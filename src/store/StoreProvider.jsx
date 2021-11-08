@@ -1,21 +1,23 @@
 import React, {createContext, useEffect, useState} from 'react';
 
+import goldUnits from '../helpers/goldUnits';
+
 export const StoreContext = createContext(null);
 
 const StoreProvider = ({children}) => {
-  const [ currencies, setCurrencies ] = useState([]);
+  const [ currenciesMarket, setCurrenciesMarket ] = useState([]);
   const [ gramOfGoldValue, setGramOfGoldValue ] = useState(0);
-  const [ cryptoCurrencies, setCryptoCurrencies ] = useState({});
+  const [ cryptoCurrenciesMarket, setCryptoCurrenciesMarket ] = useState({});
   const [ possibleCurrencies, setPossibleCurrencies ] = useState([]);
   const [ possibleCrypto, setPossibleCrypto ] = useState([]);
-  const [ possibleGoldUnits ] = useState(['Gold g', 'Gold kg', 'Gold oz']);
+  const [ possibleGoldUnits ] = useState(goldUnits.map(unit => unit.label));
 
   const fetchCurrencies = async () => {
     try {
       const response = await fetch('https://api.nbp.pl/api/exchangerates/tables/a');
       let data = await response.json();
       data = [{currency: 'złoty', code: 'PLN', mid: 1}, ...data[0].rates]
-      setCurrencies(data);
+      setCurrenciesMarket(data);
     } catch(error) {
       console.warn(error);
     }
@@ -35,7 +37,7 @@ const StoreProvider = ({children}) => {
     try {
       const response = await fetch('https://api.bitbay.net/rest/trading/ticker');
       const data = await response.json();
-      setCryptoCurrencies(data.items);
+      setCryptoCurrenciesMarket(data.items);
     } catch(error) {
       console.warn(error);
     }
@@ -51,14 +53,14 @@ const StoreProvider = ({children}) => {
     fetchData();
   }, []);
 
-  const getCorrenciesCodes = () => {
-    const units = currencies.map(curr => curr.code);
+  const getCurrenciesCodes = () => {
+    const units = currenciesMarket.map(curr => curr.code);
     units.sort()
     setPossibleCurrencies(units);
   };
 
   const getCryptoCodes = () => {
-    let units = Object.keys(cryptoCurrencies).map(item => {
+    let units = Object.keys(cryptoCurrenciesMarket).map(item => {
       item = item.slice(0, item.indexOf('-'))
       return item;
     });
@@ -79,15 +81,15 @@ const StoreProvider = ({children}) => {
     setPossibleCrypto(units);
   };
 
-  useEffect(getCorrenciesCodes, [currencies]);
+  useEffect(getCurrenciesCodes, [currenciesMarket]);
 
-  useEffect(getCryptoCodes, [cryptoCurrencies]);
+  useEffect(getCryptoCodes, [cryptoCurrenciesMarket]);
 
   return(
     <StoreContext.Provider value={{
-      currencies,
+      currenciesMarket,
       gramOfGoldValue,
-      cryptoCurrencies,
+      cryptoCurrenciesMarket,
       possibleCurrencies,
       possibleCrypto,
       possibleGoldUnits,

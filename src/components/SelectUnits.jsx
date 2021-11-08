@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import { StoreContext } from '../store/StoreProvider';
 
+import { CURRENCY, CRYPTO, GOLD } from '../helpers/VAR'
+
 const SelectUnits = ({defaultUnits, exportUnit}) => {
   const { possibleCurrencies, possibleCrypto, possibleGoldUnits } = useContext(StoreContext);
   const [ unit, setUnit ] = useState(defaultUnits.code);
@@ -13,11 +15,11 @@ const SelectUnits = ({defaultUnits, exportUnit}) => {
   useEffect(()=>{
     let unitType
     if (possibleCurrencies.findIndex(currency => currency === unit) >= 0){
-      unitType = 'currency'
+      unitType = CURRENCY
     } else if (possibleCrypto.findIndex(crypto => crypto === unit) >= 0){
-      unitType = 'crypto'
+      unitType = CRYPTO
     } else if (possibleGoldUnits.findIndex(goldUnit => goldUnit === unit) >=0){
-      unitType = 'gold'
+      unitType = GOLD
     };
     exportUnit({code: unit, type: unitType})
   },[ unit ])
