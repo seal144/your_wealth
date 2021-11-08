@@ -36,10 +36,10 @@ const SelectUnits = ({defaultUnits, exportUnit}) => {
 
   return ( 
     <select name="unit" value={unit} onChange={handleUnitChange}>
-      <optgroup label="Currencies">
+      <optgroup label="Fiat">
         {optionsCurrencies}
       </optgroup>
-      <optgroup label="Cryptocurrencies">
+      <optgroup label="Crypto">
         {optionsCrypto}
       </optgroup>
       <optgroup label="Gold">
