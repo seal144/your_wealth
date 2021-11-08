@@ -1,17 +1,23 @@
 import React, {createContext, useEffect, useState} from 'react';
 
+import goldUnits from '../helpers/goldUnits';
+
 export const StoreContext = createContext(null);
 
 const StoreProvider = ({children}) => {
-  const [ currencies, setCurrencies ] = useState([]);
+  const [ currenciesMarket, setCurrenciesMarket ] = useState([]);
   const [ gramOfGoldValue, setGramOfGoldValue ] = useState(0);
-  const [ cryptoCurrencies, setCryptoCurrencies ] = useState({}); 
+  const [ cryptoCurrenciesMarket, setCryptoCurrenciesMarket ] = useState({});
+  const [ possibleCurrencies, setPossibleCurrencies ] = useState([]);
+  const [ possibleCrypto, setPossibleCrypto ] = useState([]);
+  const [ possibleGoldUnits ] = useState(goldUnits.map(unit => unit.label));
 
   const fetchCurrencies = async () => {
     try {
       const response = await fetch('https://api.nbp.pl/api/exchangerates/tables/a');
-      const data = await response.json();
-      setCurrencies(data[0].rates);
+      let data = await response.json();
+      data = [{currency: 'złoty', code: 'PLN', mid: 1}, ...data[0].rates]
+      setCurrenciesMarket(data);
     } catch(error) {
       console.warn(error);
     }
@@ -31,7 +37,7 @@ const StoreProvider = ({children}) => {
     try {
       const response = await fetch('https://api.bitbay.net/rest/trading/ticker');
       const data = await response.json();
-      setCryptoCurrencies(data.items);
+      setCryptoCurrenciesMarket(data.items);
     } catch(error) {
       console.warn(error);
     }
@@ -47,12 +53,47 @@ const StoreProvider = ({children}) => {
     fetchData();
   }, []);
 
+  const getCurrenciesCodes = () => {
+    const units = currenciesMarket.map(curr => curr.code);
+    units.sort()
+    setPossibleCurrencies(units);
+  };
+
+  const getCryptoCodes = () => {
+    let units = Object.keys(cryptoCurrenciesMarket).map(item => {
+      item = item.slice(0, item.indexOf('-'))
+      return item;
+    });
+    units = units.filter((unit , index, array) => {
+      let result = true;
+      if (index === 0) {
+        return result 
+      } 
+      for (let i = 0; i < index; i++) {
+        if (unit === array[i]){
+          result = false;
+          break;
+        }
+      }
+      return result;
+    })
+    units.sort();
+    setPossibleCrypto(units);
+  };
+
+  useEffect(getCurrenciesCodes, [currenciesMarket]);
+
+  useEffect(getCryptoCodes, [cryptoCurrenciesMarket]);
+
   return(
     <StoreContext.Provider value={{
-      currencies: currencies,
-      gramOfGoldValue: gramOfGoldValue,
-      cryptoCurrencies: cryptoCurrencies,
-      refreshRate: fetchData,
+      currenciesMarket,
+      gramOfGoldValue,
+      cryptoCurrenciesMarket,
+      possibleCurrencies,
+      possibleCrypto,
+      possibleGoldUnits,
+      refreshRates: fetchData,
       }
     }>
       {children}
@@ -61,3 +102,5 @@ const StoreProvider = ({children}) => {
 };
 
 export default StoreProvider;
+
+// @todo should be cryptocurrency not cryptoCurrency
