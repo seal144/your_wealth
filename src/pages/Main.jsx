@@ -16,6 +16,8 @@ const Main = () => {
   const [ inputFields, setInputFields ] = useState([{id:0, value: 0, unit: mainUnit}]);
   const [ sum, setSum ] = useState(0);
 
+  console.log(currenciesMarket, gramOfGoldValue, cryptoCurrenciesMarket);
+
   const addField = () => {
     const newField = {
       id: lastId + 1,
@@ -90,7 +92,13 @@ const Main = () => {
 
   useEffect(()=>{
     calculateSum();
-  }, [inputFields, mainUnit])
+  }, [ 
+    inputFields, 
+    mainUnit, 
+    currenciesMarket, 
+    gramOfGoldValue, 
+    cryptoCurrenciesMarket 
+  ])
 
   const displayInputFields = inputFields.map(item => (
     <InputField 
@@ -114,3 +122,5 @@ const Main = () => {
 }
 
 export default Main;
+
+// @todo zostaje 0
