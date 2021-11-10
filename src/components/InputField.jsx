@@ -4,7 +4,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import SelectUnits from './SelectUnits';
 
 const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
-  const [ value, setValue ] = useState(0);
+  const [ value, setValue ] = useState('');
   const [ unit, setUnit ] = useState(defaultUnit);
 
   const handleValueChange = (event) => {
@@ -21,7 +21,14 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
 
   return(
     <form onSubmit={(e)=>{e.preventDefault()}}>
-      <input type="number" min="0" name="value" value={value} onChange={handleValueChange}/>
+      <input 
+        type="number" 
+        min="0" 
+        name="value" 
+        value={value} 
+        onChange={handleValueChange}
+        placeholder="Input value"
+      />
       <SelectUnits defaultUnits={unit} exportUnit={importUnit} /> 
       <button type="button" onClick={() => {deleteField(id)}}><CloseOutlined /></button>
     </form>
@@ -30,4 +37,3 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
 
 export default React.memo(InputField);
 
-//sprawdzic czy to memo dziala
