@@ -4,8 +4,17 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 100%;
-  background-color: $backgorund-default-theme;
+  width: 90vw;
+  margin: 0 auto;
+  @media (min-width: $sm) {
+    width: 75vw;
+  }
+  @media (min-width: $md) {
+    width: 60vw;
+  }
+  @media (min-width: $lg) {
+    width: 45vw;
+  }
 
   &__header {
     // background-color: #eee;
@@ -17,10 +26,11 @@
   &__main {
     // background-color: #ddd;
     flex-grow: 1;
+    padding: 1rem 0 3rem 0;
   }
 
   &__footer {
-    // background-color: #ccc;
+    background-color: #ddd;
     position: fixed;
     bottom: 0;
     text-align: right;

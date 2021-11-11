@@ -1,0 +1,16 @@
+@import "../styles/variables.scss";
+
+.home {
+  &__title {
+    margin-bottom: 0.5rem;
+    @media (min-height: 350px) {
+      margin-bottom: 1rem;
+    }
+  }
+  &__paragraph {
+    margin-bottom: 1rem;
+    @media (min-height: 350px) {
+      margin-bottom: 2rem;
+    }
+  }
+}

@@ -19,10 +19,10 @@ function App() {
           <main className="app__main">
             <Content />
           </main>
-          <footer className="app__footer">
-            <Footer content="contact: functionalweasel@gmail.com" />
-          </footer>
         </div>
+        <footer className="app__footer">
+          <Footer content="contact: functionalweasel@gmail.com" />
+        </footer>
       </Router>
     </StoreProvider>
   );
