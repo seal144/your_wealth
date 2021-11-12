@@ -26,7 +26,10 @@
   &__main {
     // background-color: #ddd;
     flex-grow: 1;
-    padding: 1rem 0 3rem 0;
+    padding: 1rem 0 4rem 0;
+    @media (max-height: 350px) {
+      padding: 0 0 0.5rem;
+    }
   }
 
   &__footer {
