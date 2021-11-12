@@ -116,7 +116,7 @@ const Main = () => {
       <h2 className="main__title">INPUT_YOUR_WEALTH</h2>
       {displayInputFields}
       <button className="main__add" onClick={addField}><PlusOutlined /></button>
-      <h2 className="main__title">SUM_OF_YOUR_WEALTH</h2>
+      <h2 className="main__sumTitle">SUM_OF_YOUR_WEALTH</h2>
       <Sum sum={sum} mainUnit={mainUnit} setMainUnit={setMainUnit}/>
     </div>
   )
