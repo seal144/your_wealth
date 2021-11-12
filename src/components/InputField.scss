@@ -1,0 +1,68 @@
+@import "../styles/variables.scss";
+
+.form {
+  border: 2px solid $color1-default-theme;
+  margin: 0 auto 0.3rem auto;
+  display: flex;
+  width: 80%;
+  @media (min-width: $sm) {
+    width: 60%;
+  }
+  @media (min-width: $md) {
+    width: 50%;
+  }
+
+  &__number {
+    margin-right: 0.3rem;
+    height: 1.5rem;
+    border-radius: 0px;
+    border: none;
+    border-right: 1px solid $color1-default-theme;
+    text-align: center;
+    min-width: 2rem;
+    flex-grow: 1;
+
+    &:focus,
+    &:hover {
+      outline: none;
+      border: 1px solid $color1-default-theme;
+      border-right: 3px solid $color1-default-theme;
+    }
+  }
+
+  &__select {
+    margin-right: 0.3rem;
+    height: 1.5rem;
+    width: 4rem;
+    border-radius: 0px;
+    border: none;
+    border-left: 1px solid $color1-default-theme;
+    border-right: 1px solid $color1-default-theme;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus,
+    &:hover {
+      outline: none;
+      border: 1px solid $color1-default-theme;
+      border-right: 3px solid $color1-default-theme;
+      border-left: 3px solid $color1-default-theme;
+    }
+  }
+
+  &__delete {
+    padding: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: none;
+    border-radius: 0;
+    border-left: 2px solid $color1-default-theme;
+
+    &:hover {
+      border: 1px solid $color1-default-theme;
+      border-left: 2px solid $color1-default-theme;
+    }
+  }
+}

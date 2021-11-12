@@ -39,6 +39,7 @@ button,
 button:hover,
 .button:hover {
   background-color: rgba(0, 0, 0, 0.15);
+  outline: 1px solid $color1-default-theme;
 }
 
 button:active,

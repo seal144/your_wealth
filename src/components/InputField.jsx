@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 
 import SelectUnits from './SelectUnits';
+import './InputField.scss';
 
 const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
   const [ value, setValue ] = useState('');
@@ -20,8 +21,9 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
   },[value, unit]);
 
   return(
-    <form onSubmit={(e)=>{e.preventDefault()}}>
+    <form onSubmit={(e)=>{e.preventDefault()}} className="form">
       <input 
+        className="form__number"
         type="number" 
         min="0" 
         name="value" 
@@ -29,8 +31,18 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
         onChange={handleValueChange}
         placeholder="Input value"
       />
-      <SelectUnits defaultUnits={unit} exportUnit={importUnit} /> 
-      <button type="button" onClick={() => {deleteField(id)}}><CloseOutlined /></button>
+      <SelectUnits 
+        defaultUnits={unit} 
+        exportUnit={importUnit} 
+        className="form__select"
+      /> 
+      <button 
+        type="button" 
+        onClick={() => {deleteField(id)}}
+        className="form__delete"
+      >
+        <CloseOutlined />
+      </button>
     </form>
   )
 }

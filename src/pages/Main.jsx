@@ -5,8 +5,9 @@ import { StoreContext } from '../store/StoreProvider';
 import goldUnits from '../helpers/goldUnits';
 import InputField from '../components/InputField'
 import Sum from '../components/Sum'
-
 import { CURRENCY, CRYPTO, GOLD } from '../helpers/VAR'
+
+import './Main.scss';
 
 let lastId = 0;
 
@@ -114,7 +115,7 @@ const Main = () => {
     <div className="main">
       <h2 className="main__title">INPUT_YOUR_WEALTH</h2>
       {displayInputFields}
-      <button onClick={addField}><PlusOutlined /></button>
+      <button className="main__add" onClick={addField}><PlusOutlined /></button>
       <h2 className="main__title">SUM_OF_YOUR_WEALTH</h2>
       <Sum sum={sum} mainUnit={mainUnit} setMainUnit={setMainUnit}/>
     </div>
@@ -123,4 +124,3 @@ const Main = () => {
 
 export default Main;
 
-// @todo zostaje 0

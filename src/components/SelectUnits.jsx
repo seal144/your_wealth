@@ -4,7 +4,7 @@ import { StoreContext } from '../store/StoreProvider';
 
 import { CURRENCY, CRYPTO, GOLD } from '../helpers/VAR'
 
-const SelectUnits = ({defaultUnits, exportUnit}) => {
+const SelectUnits = ({defaultUnits, exportUnit, className}) => {
   const { possibleCurrencies, possibleCrypto, possibleGoldUnits } = useContext(StoreContext);
   const [ unit, setUnit ] = useState(defaultUnits.code);
 
@@ -35,7 +35,7 @@ const SelectUnits = ({defaultUnits, exportUnit}) => {
   ));
 
   return ( 
-    <select name="unit" value={unit} onChange={handleUnitChange}>
+    <select name="unit" value={unit} onChange={handleUnitChange} className={className}>
       <optgroup label="Fiat">
         {optionsCurrencies}
       </optgroup>
