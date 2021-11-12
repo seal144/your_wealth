@@ -1,0 +1,21 @@
+@import "../styles/variables.scss";
+
+.main {
+  &__title {
+    margin-bottom: $margin-bottom-content;
+  }
+  &__add {
+    padding: 0;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    height: 1.6rem;
+    width: 80%;
+    @media (min-width: $sm) {
+      width: 60%;
+    }
+    @media (min-width: $md) {
+      width: 50%;
+    }
+    // width like in InputField.scss and Sum.scss
+  }
+}

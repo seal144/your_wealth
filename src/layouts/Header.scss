@@ -4,8 +4,7 @@
   display: flex;
 
   &__logo {
-    width: $header-hight;
-    margin-left: 2rem;
+    width: calc($header-hight - 4px);
     font-size: 2.5rem;
     cursor: pointer;
   }
@@ -19,10 +18,10 @@
   }
 
   &__button {
-    width: $header-hight;
-    height: min-content;
+    width: calc($header-hight - 4px);
+    height: calc($header-hight - 4px);
     font-size: 1.2rem;
-    margin: auto 2rem auto 0;
+    margin: auto 0;
 
     & .icon {
       transition: 0.4s transform;

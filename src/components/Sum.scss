@@ -1,0 +1,36 @@
+@import "../styles/variables.scss";
+
+.sum {
+  border: 3px solid $color1-default-theme;
+  padding: 0.6rem;
+  margin: 0 auto 2rem;
+  width: 80%;
+  @media (min-width: $sm) {
+    width: 60%;
+  }
+  @media (min-width: $md) {
+    width: 50%;
+  }
+  // width like in Main.scss and InputField.scss
+
+  &__text {
+    margin-bottom: 0.6rem;
+    font-size: 1.5rem;
+    text-decoration: underline;
+  }
+
+  &__select {
+    border: 2px solid $color1-default-theme;
+    height: $input-height;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus,
+    &:hover {
+      outline: none;
+      border: 3px solid $color1-default-theme;
+    }
+  }
+}
