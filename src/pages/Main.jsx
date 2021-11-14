@@ -115,7 +115,13 @@ const Main = () => {
     <div className="main">
       <h2 className="main__title">INPUT_YOUR_WEALTH</h2>
       {displayInputFields}
-      <button className="main__add" onClick={addField}><PlusOutlined /></button>
+      <button 
+        className="main__add tooltip" 
+        onClick={addField}
+        data-tooltip-content="add new field"
+      >
+        <PlusOutlined />
+      </button>
       <h2 className="main__sumTitle">SUM_OF_YOUR_WEALTH</h2>
       <Sum sum={sum} mainUnit={mainUnit} setMainUnit={setMainUnit}/>
     </div>
@@ -124,3 +130,4 @@ const Main = () => {
 
 export default Main;
 
+//@handle bad units

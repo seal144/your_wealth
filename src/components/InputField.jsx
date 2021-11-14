@@ -39,7 +39,8 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
       <button 
         type="button" 
         onClick={() => {deleteField(id)}}
-        className="form__delete"
+        className="form__delete tooltip"
+        data-tooltip-content="close"
       >
         <CloseOutlined />
       </button>

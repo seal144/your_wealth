@@ -6,6 +6,11 @@
   margin: 0;
   padding: 0;
   transition: 0.1s all;
+
+  color: $color1-default-theme;
+  font-family: Inconsolata, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -15,13 +20,6 @@ html {
   @media (min-width: $lg) {
     font-size: 18px;
   }
-}
-
-#root {
-  color: $color1-default-theme;
-  font-family: Inconsolata, monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 button,

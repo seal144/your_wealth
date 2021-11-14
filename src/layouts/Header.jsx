@@ -15,7 +15,12 @@ const Header = ({content}) => {
         <div className="header__logo"> <DollarOutlined /> </div>
       </Link>
       <h1 className="header__text">{content}</h1>
-      <button className="header__button" onClick={refreshRates}><SyncOutlined className="icon" /></button>
+      <button 
+        className="header__button tooltip"
+        data-tooltip-content="update data"
+        onClick={refreshRates}>
+          <SyncOutlined className="icon" />
+        </button>
     </div>
   )
 }
