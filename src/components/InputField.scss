@@ -22,12 +22,12 @@
     text-align: center;
     min-width: 2rem;
     flex-grow: 1;
+    font-size: 1rem;
 
     &:focus,
     &:hover {
-      outline: none;
-      border: 1px solid $color1-default-theme;
-      border-right: 3px solid $color1-default-theme;
+      border: none;
+      outline: 3px solid $color1-default-theme;
     }
   }
 
@@ -40,16 +40,19 @@
     border-left: 1px solid $color1-default-theme;
     border-right: 1px solid $color1-default-theme;
     text-align: center;
+    font-size: 1rem;
 
     &:hover {
       cursor: pointer;
     }
     &:focus,
     &:hover {
-      outline: none;
-      border: 1px solid $color1-default-theme;
-      border-right: 3px solid $color1-default-theme;
-      border-left: 3px solid $color1-default-theme;
+      border: none;
+      outline: 3px solid $color1-default-theme;
+    }
+
+    & option {
+      font-size: 0.8rem;
     }
   }
 
@@ -62,8 +65,8 @@
     border-left: 2px solid $color1-default-theme;
 
     &:hover {
-      border: 1px solid $color1-default-theme;
-      border-left: 2px solid $color1-default-theme;
+      border: none;
+      outline: 3px solid $color1-default-theme;
     }
   }
 }
