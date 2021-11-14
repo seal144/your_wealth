@@ -60,23 +60,19 @@ const StoreProvider = ({children}) => {
   };
 
   const getCryptoCodes = () => {
-    let units = Object.keys(cryptoCurrenciesMarket).map(item => {
+    let units = {...cryptoCurrenciesMarket};
+
+    for(const code in units) {
+      if(code.slice(code.indexOf('-')+1) !== 'PLN') {
+        delete units[code];
+      }
+    }
+
+    units = Object.keys(units).map(item => {
       item = item.slice(0, item.indexOf('-'))
       return item;
     });
-    units = units.filter((unit , index, array) => {
-      let result = true;
-      if (index === 0) {
-        return result 
-      } 
-      for (let i = 0; i < index; i++) {
-        if (unit === array[i]){
-          result = false;
-          break;
-        }
-      }
-      return result;
-    })
+
     units.sort();
     setPossibleCrypto(units);
   };
