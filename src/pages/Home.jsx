@@ -17,5 +17,3 @@ const Home = () => {
 }
 
 export default Home;
-
-//@todo flex

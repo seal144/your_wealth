@@ -17,8 +17,6 @@ const Main = () => {
   const [ inputFields, setInputFields ] = useState([{id:0, value: 0, unit: mainUnit}]);
   const [ sum, setSum ] = useState(0);
 
-  // console.log(currenciesMarket, gramOfGoldValue, cryptoCurrenciesMarket);
-
   const addField = () => {
     const newField = {
       id: lastId + 1,

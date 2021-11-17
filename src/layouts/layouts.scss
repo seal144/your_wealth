@@ -17,14 +17,12 @@
   }
 
   &__header {
-    // background-color: #eee;
     flex-basis: $header-hight;
     line-height: $header-hight;
     text-align: center;
   }
 
   &__main {
-    // background-color: #ddd;
     flex-grow: 1;
     padding: 1rem 0 4rem 0;
     @media (max-height: 350px) {

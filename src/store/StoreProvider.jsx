@@ -98,5 +98,3 @@ const StoreProvider = ({children}) => {
 };
 
 export default StoreProvider;
-
-// @todo should be cryptocurrency not cryptoCurrency
