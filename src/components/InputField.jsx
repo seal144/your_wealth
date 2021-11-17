@@ -9,7 +9,7 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
   const [ unit, setUnit ] = useState(defaultUnit);
 
   const handleValueChange = (event) => {
-    setValue(Number(event.target.value))
+    setValue(Number(event.target.value));
   }
 
   const importUnit = (unit) => {
@@ -19,6 +19,12 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
   useEffect(()=>{
     updateinputField({id, value, unit})
   },[value, unit]);
+
+  useEffect(()=>{
+    if (value === 0){
+      setValue('');
+    }
+  },[value]);
 
   return(
     <form onSubmit={(e)=>{e.preventDefault()}} className="form">
