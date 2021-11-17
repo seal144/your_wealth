@@ -1,3 +1,12 @@
+# PUBLISHED AT
+
+http://yw.funkcjawformie.pl/
+
+# ABOUT
+
+This is "YOUR_WEALTH" - simple web app, done for training purposes. It was created using React.js.
+App is fetching data from public API ( api.nbp.pl and api.bitbay.net) about currencies, cryptocurrencies and gold rate. You can input assets in various units and app will calculate for you sum of this assets in unit of your choice using current rate.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
