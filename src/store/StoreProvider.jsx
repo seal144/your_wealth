@@ -35,7 +35,7 @@ const StoreProvider = ({children}) => {
 
   const fetchCryptoCurrencies = async () => {
     try {
-      const response = await fetch('https://api.bitbay.net/rest/trading/ticker');
+      const response = await fetch('https://api.zonda.exchange/rest/trading/ticker');
       const data = await response.json();
       setCryptoCurrenciesMarket(data.items);
     } catch(error) {
