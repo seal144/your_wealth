@@ -25,7 +25,7 @@ const StoreProvider = ({children}) => {
 
   const fetchGramOfGoldValue = async () => {
     try {
-      const response = await fetch('http://api.nbp.pl/api/cenyzlota');
+      const response = await fetch('https://api.nbp.pl/api/cenyzlota');
       const data = await response.json();
       setGramOfGoldValue(data[0].cena);
     } catch(error) {
