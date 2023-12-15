@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/your_wealth/static/css/main.7ede9628.chunk.css",
+    "main.js": "/your_wealth/static/js/main.dbd130ae.chunk.js",
+    "main.js.map": "/your_wealth/static/js/main.dbd130ae.chunk.js.map",
+    "runtime-main.js": "/your_wealth/static/js/runtime-main.3909f482.js",
+    "runtime-main.js.map": "/your_wealth/static/js/runtime-main.3909f482.js.map",
+    "static/js/2.beb6e91a.chunk.js": "/your_wealth/static/js/2.beb6e91a.chunk.js",
+    "static/js/2.beb6e91a.chunk.js.map": "/your_wealth/static/js/2.beb6e91a.chunk.js.map",
+    "index.html": "/your_wealth/index.html",
+    "static/css/main.7ede9628.chunk.css.map": "/your_wealth/static/css/main.7ede9628.chunk.css.map",
+    "static/js/2.beb6e91a.chunk.js.LICENSE.txt": "/your_wealth/static/js/2.beb6e91a.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/your_wealth/static/media/Inconsolata-Regular.ed7f6e5b.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3909f482.js",
+    "static/js/2.beb6e91a.chunk.js",
+    "static/css/main.7ede9628.chunk.css",
+    "static/js/main.dbd130ae.chunk.js"
+  ]
+}
