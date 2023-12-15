@@ -1,12 +1,12 @@
 # PUBLISHED AT
 
-http://yw.funkcjawformie.pl/
+https://seal144.github.io/your_wealth/
 
 # ABOUT
 
 This is "YOUR_WEALTH" - a simple web app, done for training purposes.
 The app is fetching data from public API ( api.nbp.pl and api.zonda.exchange) on currencies, cryptocurrencies, and gold rate. You can input assets in various units and the app will calculate for you the sum of these assets in a unit of your choice using the current rate.
-Used: React.js, Sass.
+### Used: React.js, Sass, ant-design/icons.
 
 # Getting Started with Create React App
 
