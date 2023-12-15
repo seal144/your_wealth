@@ -4,7 +4,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import SelectUnits from './SelectUnits';
 import './InputField.scss';
 
-const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
+const InputField = ({id, defaultUnit, deleteField, updateInputField}) => {
   const [ value, setValue ] = useState('');
   const [ unit, setUnit ] = useState(defaultUnit);
 
@@ -17,7 +17,7 @@ const InputField = ({id, defaultUnit, deleteField, updateinputField}) => {
   }
 
   useEffect(()=>{
-    updateinputField({id, value, unit})
+    updateInputField({id, value, unit})
   },[value, unit]);
 
   useEffect(()=>{

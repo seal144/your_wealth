@@ -34,7 +34,7 @@ const Main = () => {
     setInputFields(newInputFields);
   }
 
-  const updateinputField = (updatedField) => {
+  const updateInputField = (updatedField) => {
     const index = inputFields.findIndex(field => {return field.id === updatedField.id});
     const newInputFields = [...inputFields]
     newInputFields[index] = updatedField;
@@ -105,7 +105,7 @@ const Main = () => {
       id={item.id} 
       defaultUnit={item.unit} 
       deleteField={deleteField}
-      updateinputField={updateinputField} 
+      updateInputField={updateInputField} 
     />
   ))
 
